@@ -4,14 +4,14 @@ const resolvers = require('./resolvers');
 const { initDB } = require('./db');
 
 const startServer = async () => {
-  await initDB(); // Khởi tạo SQLite
+  await initDB();
 
   const server = new ApolloServer({
     typeDefs,
     resolvers,
   });
 
-  server.listen().then(({ url }) => {
+  server.listen({ port: 6000 }).then(({ url }) => {
     console.log(`Server ready at ${url}`);
   });
 };
